@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>YOLO - AI Video Generator</title>
+        <meta
+            name="description"
+            content="Create stunning AI videos with YOLO - Modern, clean, and powerful"
+        />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <!-- Animated Background -->
+        <div class="bg-grid"></div>
+        <div class="bg-gradient"></div>
+
+        <!-- Main Container -->
+        <div class="container">
+            <!-- Header Section -->
+            <header class="header">
+                <div class="logo-container">
+                    <div class="logo">
+                        <div class="logo-shape">
+                            <div class="logo-inner"></div>
+                        </div>
+                        <h1 class="logo-text">YOLO</h1>
+                    </div>
+                    <p class="tagline">AI Video Generator</p>
+                </div>
+                <div class="header-info">
+                    <div class="info-badge" id="statusBadge">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Ready</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Input Section -->
+                <section class="section" id="inputSection">
+                    <div class="section-header">
+                        <h2 class="section-title">Create Your Video</h2>
+                        <div class="section-line"></div>
+                    </div>
+
+                    <form id="videoForm" class="form">
+                        <!-- Model Selection -->
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span class="label-text">Model</span>
+                                <span class="label-badge">Required</span>
+                            </label>
+                            <div class="select-wrapper">
+                                <select
+                                    id="model"
+                                    name="model"
+                                    class="form-select"
+                                    required
+                                >
+                                    <option value="veo-3-fast">
+                                        veo-3-fast — Free, No Token
+                                    </option>
+                                    <option value="veo-3.1-fast">
+                                        veo-3.1-fast — Latest VEO
+                                    </option>
+                                    <option value="sora-2">
+                                        sora-2 — OpenAI Sora
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-hint">
+                                Choose the AI model for generation
+                            </div>
+                        </div>
+
+                        <!-- Prompt -->
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span class="label-text">Prompt</span>
+                                <span class="label-badge">Required</span>
+                            </label>
+                            <textarea
+                                id="prompt"
+                                name="prompt"
+                                class="form-textarea"
+                                placeholder="A young man walking on the street at sunset..."
+                                rows="4"
+                                required
+                            ></textarea>
+                            <div class="form-hint">
+                                Describe your video in detail
+                            </div>
+                        </div>
+
+                        <!-- Settings Grid -->
+                        <div class="settings-grid">
+                            <!-- Duration -->
+                            <div class="form-group">
+                                <label class="form-label">
+                                    <span class="label-text">Duration</span>
+                                </label>
+                                <div class="select-wrapper">
+                                    <select
+                                        id="duration"
+                                        name="duration"
+                                        class="form-select"
+                                    >
+                                        <option value="5">5 seconds</option>
+                                        <option value="8" selected>
+                                            8 seconds
+                                        </option>
+                                        <option value="10">10 seconds</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Aspect Ratio -->
+                            <div class="form-group">
+                                <label class="form-label">
+                                    <span class="label-text">Aspect Ratio</span>
+                                </label>
+                                <div class="select-wrapper">
+                                    <select
+                                        id="ratio"
+                                        name="ratio"
+                                        class="form-select"
+                                    >
+                                        <option value="16:9" selected>
+                                            16:9 — Landscape
+                                        </option>
+                                        <option value="9:16">
+                                            9:16 — Portrait
+                                        </option>
+                                        <option value="1:1">
+                                            1:1 — Square
+                                        </option>
+                                        <option value="4:3">
+                                            4:3 — Classic
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button
+                            type="submit"
+                            class="btn-primary"
+                            id="generateBtn"
+                        >
+                            <span class="btn-text">Generate Video</span>
+                            <span class="btn-loader"></span>
+                        </button>
+                    </form>
+                </section>
+
+                <!-- Loading Section -->
+                <section class="section section-hidden" id="loadingSection">
+                    <div class="loading-container">
+                        <div class="loading-spinner">
+                            <div class="spinner-ring"></div>
+                            <div class="spinner-ring"></div>
+                            <div class="spinner-ring"></div>
+                        </div>
+                        <h3 class="loading-title">Generating Your Video</h3>
+                        <p class="loading-text">This may take 1-3 minutes...</p>
+                        <div class="loading-progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Result Section -->
+                <section class="section section-hidden" id="resultSection">
+                    <div class="section-header">
+                        <h2 class="section-title">Your Video is Ready</h2>
+                        <div class="section-line"></div>
+                    </div>
+
+                    <div class="video-container">
+                        <video id="videoPlayer" class="video-player" controls>
+                            <source id="videoSource" type="video/mp4" />
+                            Your browser does not support video playback.
+                        </video>
+                    </div>
+
+                    <div class="video-info" id="videoInfo"></div>
+
+                    <div class="action-buttons">
+                        <a
+                            href="#"
+                            id="downloadBtn"
+                            class="btn-secondary"
+                            download
+                        >
+                            <span>Download Video</span>
+                        </a>
+                        <button
+                            type="button"
+                            class="btn-primary"
+                            id="newVideoBtn"
+                        >
+                            <span>Create Another</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Error Section -->
+                <section class="section section-hidden" id="errorSection">
+                    <div class="error-container">
+                        <div class="error-icon">
+                            <div class="error-mark"></div>
+                        </div>
+                        <h3 class="error-title">Generation Failed</h3>
+                        <p class="error-message" id="errorMessage"></p>
+                        <button type="button" class="btn-primary" id="retryBtn">
+                            <span>Try Again</span>
+                        </button>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-content">
+                    <div class="footer-text">
+                        <span>YOLO</span>
+                        <span class="footer-separator">—</span>
+                        <span>Powered by Nekolabs, Hugging Face & fal.ai</span>
+                    </div>
+                    <div class="footer-links">
+                        <a href="/api/health" class="footer-link">API Status</a>
+                        <span class="footer-separator">•</span>
+                        <a href="https://github.com" class="footer-link"
+                            >GitHub</a
+                        >
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Toast Notification -->
+        <div class="toast" id="toast">
+            <div class="toast-content">
+                <span class="toast-message" id="toastMessage"></span>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

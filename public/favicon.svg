@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .yin-bg { fill: #000000; }
+      .yang-bg { fill: #ffffff; }
+      .yin-dot { fill: #ffffff; }
+      .yang-dot { fill: #000000; }
+    </style>
+  </defs>
+
+  <!-- Outer circle -->
+  <circle cx="50" cy="50" r="48" fill="none" stroke="#666" stroke-width="2"/>
+
+  <!-- Yang (white) half -->
+  <path class="yang-bg" d="M 50 2 A 48 48 0 0 1 50 98 A 24 24 0 0 1 50 50 A 24 24 0 0 0 50 2 Z"/>
+
+  <!-- Yin (black) half -->
+  <path class="yin-bg" d="M 50 2 A 48 48 0 0 0 50 98 A 24 24 0 0 0 50 50 A 24 24 0 0 1 50 2 Z"/>
+
+  <!-- Yang dot (black on white) -->
+  <circle class="yang-dot" cx="50" cy="26" r="6"/>
+
+  <!-- Yin dot (white on black) -->
+  <circle class="yin-dot" cx="50" cy="74" r="6"/>
+</svg>
