@@ -774,15 +774,18 @@ body {
 
 .video-actions {
     display: flex;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-xl);
     flex-wrap: wrap;
-    margin-top: var(--spacing-xl);
+    margin-top: var(--spacing-2xl);
+    justify-content: center;
 }
 
 .video-actions .btn-primary,
 .video-actions .btn-secondary {
     flex: 1;
-    min-width: 200px;
+    min-width: 220px;
+    max-width: 300px;
+    padding: 1.25rem 2.5rem;
 }
 
 /* ============================================
@@ -998,13 +1001,16 @@ body {
 
     .video-actions {
         flex-direction: column;
-        gap: var(--spacing-md);
+        gap: var(--spacing-lg);
+        margin-top: var(--spacing-xl);
     }
 
     .video-actions .btn-primary,
     .video-actions .btn-secondary {
         width: 100%;
         min-width: auto;
+        padding: 1.125rem 2rem;
+        font-size: var(--text-base);
     }
 
     .footer-content {
