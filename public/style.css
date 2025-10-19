@@ -774,7 +774,7 @@ body {
 
 .video-actions {
     display: flex;
-    gap: var(--spacing-xl);
+    gap: 3rem;
     flex-wrap: wrap;
     margin-top: var(--spacing-2xl);
     justify-content: center;
@@ -782,10 +782,11 @@ body {
 
 .video-actions .btn-primary,
 .video-actions .btn-secondary {
-    flex: 1;
-    min-width: 220px;
-    max-width: 300px;
-    padding: 1.25rem 2.5rem;
+    flex: 0 1 auto;
+    min-width: 240px;
+    max-width: 320px;
+    padding: 1.5rem 3rem;
+    margin: 0 1rem;
 }
 
 /* ============================================
@@ -1001,7 +1002,7 @@ body {
 
     .video-actions {
         flex-direction: column;
-        gap: var(--spacing-lg);
+        gap: 2rem;
         margin-top: var(--spacing-xl);
     }
 
@@ -1009,8 +1010,10 @@ body {
     .video-actions .btn-secondary {
         width: 100%;
         min-width: auto;
-        padding: 1.125rem 2rem;
+        max-width: none;
+        padding: 1.25rem 2rem;
         font-size: var(--text-base);
+        margin: 0.5rem 0;
     }
 
     .footer-content {
